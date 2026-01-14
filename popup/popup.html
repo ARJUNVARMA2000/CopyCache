@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clipboard History</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header with search and filters -->
+    <header class="header">
+      <div class="search-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="M21 21l-4.35-4.35"/>
+        </svg>
+        <input type="text" id="search-input" class="search-input" placeholder="Search clipboard..." autofocus>
+      </div>
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="text">Text</button>
+        <button class="filter-btn" data-filter="url">URL</button>
+      </div>
+    </header>
+
+    <!-- Main content area -->
+    <main class="content">
+      <!-- Pinned section -->
+      <section class="section pinned-section" id="pinned-section">
+        <div class="section-header" id="pinned-header">
+          <svg class="pin-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 12V4h1V2H7v2h1v8l-2 2v2h5.2v6h1.6v-6H18v-2l-2-2z"/>
+          </svg>
+          <span>Pinned</span>
+          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="entries-list" id="pinned-list"></div>
+      </section>
+
+      <!-- Recent section -->
+      <section class="section recent-section">
+        <div class="section-header">
+          <svg class="clock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <span>Recent</span>
+        </div>
+        <div class="entries-list" id="recent-list"></div>
+      </section>
+
+      <!-- Empty state -->
+      <div class="empty-state" id="empty-state">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
+          <rect x="9" y="3" width="6" height="4" rx="1"/>
+        </svg>
+        <p>No clipboard history yet</p>
+        <span>Copy some text to get started</span>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="shortcuts">
+        <span><kbd>↑↓</kbd> Navigate</span>
+        <span><kbd>Enter</kbd> Copy</span>
+        <span><kbd>Del</kbd> Remove</span>
+      </div>
+      <button class="clear-btn" id="clear-btn">Clear All</button>
+    </footer>
+  </div>
+
+  <script src="popup.js" type="module"></script>
+</body>
+</html>
